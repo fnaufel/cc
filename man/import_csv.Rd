@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_csv.R
 \name{import_csv}
 \alias{import_csv}
-\title{Imports a csv file produced by \href{https://tabula.technology/}{tabula}.}
+\title{Import a csv file produced by \href{https://tabula.technology/}{tabula}.}
 \usage{
 import_csv(filename)
 }
@@ -14,8 +14,7 @@ A tibble.
 }
 \description{
 The user must manually select the areas of the pdf file to be converted to csv files.
-}
-\details{
+
 The csv file must not have column names in the first line.
 
 The csv file must contain 3 columns, otherwise, an error is thrown.

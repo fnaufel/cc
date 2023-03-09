@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_monthly_payments.R
 \name{extract_monthly_payments}
 \alias{extract_monthly_payments}
-\title{Extracts installment info from \code{item} field.}
+\title{Extract installment info from \code{item} field.}
 \usage{
 extract_monthly_payments(df)
 }

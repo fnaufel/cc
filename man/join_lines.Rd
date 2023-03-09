@@ -2,12 +2,12 @@
 % Please edit documentation in R/join_lines.R
 \name{join_lines}
 \alias{join_lines}
-\title{Gathers info for each payment.}
+\title{Gather info for each payment.}
 \usage{
 join_lines(df)
 }
 \arguments{
-\item{df}{A tibble produced by \code{\link[=import_dir]{import_dir()}}.}
+\item{df}{A tibble.}
 }
 \value{
 A tibble.

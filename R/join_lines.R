@@ -1,8 +1,8 @@
-#' Gathers info for each payment.
+#' Gather info for each payment.
 #'
-#' Because of the way the pdf file is converted to csv, each record spans 2 lines. The second line contains info about the category and the city.
+#' @description Because of the way the pdf file is converted to csv, each record spans 2 lines. The second line contains info about the category and the city.
 #'
-#' @param df A tibble produced by [import_dir()].
+#' @param df A tibble.
 #' @return A tibble.
 #' @author Fernando Naufel
 #' @importFrom dplyr filter mutate

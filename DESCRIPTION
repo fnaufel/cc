@@ -1,15 +1,25 @@
 Package: cc
 Title: Credit Card Management
 Version: 0.0.0.9000
-Authors@R: person("Fernando", "Naufel", ,
-      "fnaufel@gmail.com", role = c("aut", "cre"))
-Description: Creates tibbles with payment info. Only
-      handles Itau MasterCard for now.
+Authors@R: person("Fernando", "Naufel", , "fnaufel@gmail.com", role =
+       c("aut", "cre"))
+Description: Creates tibbles with payment info. Only handles Itau
+       MasterCard for now.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Imports: dplyr, janitor, lubridate, powerjoin, purrr,
-      readr, stringr, tidyr
+Imports: 
+    DataEditR,
+    dplyr,
+    fs,
+    janitor,
+    lubridate,
+    magrittr,
+    powerjoin,
+    purrr,
+    readr,
+    stringr,
+    tidyr
 URL: https://github.com/fnaufel/cc
 BugReports: https://github.com/fnaufel/cc/issues

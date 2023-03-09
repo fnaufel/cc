@@ -1,6 +1,6 @@
-#' Extracts installment info from `item` field.
+#' Extract installment info from `item` field.
 #'
-#' Creates columns `parcela` and `n_parcelas`.
+#' @description Creates columns `parcela` and `n_parcelas`.
 #'
 #' @param df A tibble created by [join_lines()].
 #' @return A tibble.

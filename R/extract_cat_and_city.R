@@ -1,6 +1,6 @@
-#' Extracts category and city from `info` field.
+#' Extract category and city from `info` field.
 #'
-#' Creates columns `categoria` and `cidade`.
+#' @description Creates columns `categoria` and `cidade`.
 #'
 #' @param df A tibble created by [extract_monthly_payments()].
 #' @return A tibble.

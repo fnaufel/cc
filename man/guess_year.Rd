@@ -2,7 +2,7 @@
 % Please edit documentation in R/guess_year.R
 \name{guess_year}
 \alias{guess_year}
-\title{Computes the year of the item's date.}
+\title{Compute the year of each item's date.}
 \usage{
 guess_year(df, due_date)
 }
@@ -16,8 +16,7 @@ A tibble.
 }
 \description{
 Originally, \code{data} only has day and month. We compare \code{data} with the due date (usually this month); if \code{data} is in the future, we conclude the item is an installment from last year.
-}
-\details{
+
 \strong{Careful:} this only works \emph{if no purchase has more than 12 installments}.
 }
 \author{

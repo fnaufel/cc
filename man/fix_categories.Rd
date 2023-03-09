@@ -2,19 +2,19 @@
 % Please edit documentation in R/fix_categories.R
 \name{fix_categories}
 \alias{fix_categories}
-\title{Uses more detailed categories and subcategories.}
+\title{Match items to more detailed categories and subcategories.}
 \usage{
-fix_categories(df, due_date)
+fix_categories(df, dirname)
 }
 \arguments{
-\item{df}{Tibble produced by \code{\link[=guess_date]{guess_date()}}.}
+\item{df}{Tibble produced by \code{\link[=guess_year]{guess_year()}}.}
 
-\item{due_date}{Date of current fatura.}
+\item{dirname}{Path passed by the user to \code{\link[=import_dir]{import_dir()}}.}
+}
+\value{
+A tibble.
 }
 \description{
-It returns nothing, but writes files \code{df_auto_categorized.csv} and \code{df_to_categorize.csv} to the current dir.
-}
-\details{
 This function uses file \code{../../items_categories.csv}, which contains the association between items and categories.
 }
 \author{

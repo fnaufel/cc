@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_cat_and_city.R
 \name{extract_cat_and_city}
 \alias{extract_cat_and_city}
-\title{Extracts category and city from \code{info} field.}
+\title{Extract category and city from \code{info} field.}
 \usage{
 extract_cat_and_city(df)
 }

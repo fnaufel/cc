@@ -1,6 +1,6 @@
-#' Imports a csv file produced by [tabula](https://tabula.technology/).
+#' Import a csv file produced by [tabula](https://tabula.technology/).
 #'
-#' The user must manually select the areas of the pdf file to be converted to csv files.
+#' @description The user must manually select the areas of the pdf file to be converted to csv files.
 #'
 #' The csv file must not have column names in the first line.
 #'

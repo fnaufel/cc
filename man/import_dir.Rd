@@ -2,18 +2,21 @@
 % Please edit documentation in R/import_dir.R
 \name{import_dir}
 \alias{import_dir}
-\title{Imports all csv files in directory \code{dirname}.}
+\title{Import and process all tabula csv files in directory \code{dirname}.}
 \usage{
-import_dir(dirname)
+import_dir(dirname, due_date)
 }
 \arguments{
 \item{dirname}{Directory as string.}
-}
-\value{
-A tibble.
+
+\item{due_date}{Date of current fatura.}
 }
 \description{
-Just calls \code{\link[=import_csv]{import_csv()}} on all files with extension \code{.csv}.
+This will read all csv files of the form 'tabula*.csv' in \code{dirname} and create 2 files (also in \code{dirname}):
+\itemize{
+\item \code{df_matched.csv}, containing records whose categories were automatically determined (based on a table read from \code{dirname/../../categories.csv}), and
+\item \code{df_unmatched.csv}, containing records with the original categories from the fatura pdf.
+}
 }
 \author{
 Fernando Naufel
