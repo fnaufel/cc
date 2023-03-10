@@ -31,18 +31,7 @@ import_dir <- function(dirname, due_date) {
     extract_cat_and_city() %>%
     guess_year(due_date) %>%
     fix_categories(dirname) %>%
-    mutate(obs = '') %>%
-    dplyr::select(
-      data,
-      item,
-      valor,
-      categoria,
-      obs,
-      cidade,
-      parcela,
-      n_parcelas,
-      data_fatura
-    )
+    mutate(obs = '')
 
   # Items that matched
   df_matched <- df %>%
@@ -64,14 +53,14 @@ import_dir <- function(dirname, due_date) {
 
   # Write to files
   df_matched %>%
-    readr::write_csv(
+    write_df(
       fs::path_norm(
         fs::path_join(c(dirname, 'df_matched.csv'))
       )
     )
 
   df_unmatched %>%
-    readr::write_csv(
+    write_df(
       fs::path_norm(
         fs::path_join(c(dirname, 'df_unmatched.csv'))
       )

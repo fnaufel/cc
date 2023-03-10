@@ -11,29 +11,20 @@
 #' @export
 create_final <- function (dirname) {
 
-  df_1 <- readr::read_csv(
+  df_1 <- read_df(
     fs::path_norm(
       fs::path_join(
-        c(
-          dirname,
-          'df_matched_reviewed.csv'
-        )
+        c(dirname, 'df_matched_reviewed.csv')
       )
-    ),
-    col_types = 'iDcdcccii',
-    col_select = -1,
-    locale = readr::locale(decimal_mark = ',')
+    )
   )
 
-  df_2 <- readr::read_csv(
+  df_2 <- read_df(
     fs::path_norm(
       fs::path_join(
         c(dirname, 'df_unmatched_reviewed.csv')
       )
-    ),
-    col_types = 'iDcdcccii',
-    col_select = -1,
-    locale = readr::locale(decimal_mark = ',')
+    )
   )
 
   df_final <- df_1 %>%
@@ -41,7 +32,7 @@ create_final <- function (dirname) {
     dplyr::arrange(data)
 
   df_final %>%
-    readr::write_csv(
+    write_df(
       fs::path_norm(
         fs::path_join(
           c(dirname, 'df_final.csv')

@@ -41,13 +41,10 @@ review <- function(dirname, file) {
     dplyr::pull(categoria)
 
   # Read matched df
-  df <- readr::read_csv(
+  df <- read_df(
     fs::path_norm(
-      fs::path_join(
-        c(dirname, file)
-      )
-    ),
-    col_types = 'DcdccciiD'
+      fs::path_join(c(dirname, file))
+    )
   )
 
   # Edit interactively and save
