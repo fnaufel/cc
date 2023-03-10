@@ -20,6 +20,7 @@ Imports:
     purrr,
     readr,
     stringr,
-    tidyr
+    tidyr,
+    tidyselect
 URL: https://github.com/fnaufel/cc
 BugReports: https://github.com/fnaufel/cc/issues

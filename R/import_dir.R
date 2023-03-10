@@ -31,7 +31,18 @@ import_dir <- function(dirname, due_date) {
     extract_cat_and_city() %>%
     guess_year(due_date) %>%
     fix_categories(dirname) %>%
-    mutate(obs = '')
+    mutate(obs = '') %>%
+    dplyr::select(
+      data,
+      item,
+      valor,
+      categoria,
+      obs,
+      cidade,
+      parcela,
+      n_parcelas,
+      data_fatura
+    )
 
   # Items that matched
   df_matched <- df %>%

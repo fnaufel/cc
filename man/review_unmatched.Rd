@@ -2,7 +2,7 @@
 % Please edit documentation in R/review.R
 \name{review_unmatched}
 \alias{review_unmatched}
-\title{Read \code{df_unmatched.csv} into a tibble and edit interactively.}
+\title{Read \code{df_unmatched.csv} or \code{df_unmatched_reviewed.csv} into a tibble and edit interactively.}
 \usage{
 review_unmatched(dirname)
 }
@@ -10,5 +10,5 @@ review_unmatched(dirname)
 \item{dirname}{Directory where csv files are.}
 }
 \description{
-Read \code{df_unmatched.csv} into a tibble and edit interactively.
+If the \verb{_reviewed} file exists, edit that. It may have partial changes made by the user.
 }

@@ -1,4 +1,6 @@
-#' Read `df_matched.csv` into a tibble and edit interactively.
+#' Read `df_matched.csv` or `df_matched_reviewed.csv` into a tibble and edit interactively.
+#'
+#' @description If the `_reviewed` file exists, edit that. It may have partial changes made by the user.
 #'
 #' @param dirname Directory where csv files are.
 #'
@@ -9,11 +11,25 @@
 #' @export
 review_matched <- function(dirname) {
 
-  review(dirname, 'df_matched.csv')
+  filename <- 'df_matched.csv'
+
+  if (
+    fs::file_exists(
+      fs::path_norm(
+        fs::path_join(c(dirname, 'df_matched_reviewed.csv'))
+      )
+    )
+  ) {
+    filename <- 'df_matched_reviewed.csv'
+  }
+
+  review(dirname, filename)
 
 }
 
-#' Read `df_unmatched.csv` into a tibble and edit interactively.
+#' Read `df_unmatched.csv` or `df_unmatched_reviewed.csv` into a tibble and edit interactively.
+#'
+#' @description If the `_reviewed` file exists, edit that. It may have partial changes made by the user.
 #'
 #' @param dirname Directory where csv files are.
 #'
@@ -24,7 +40,19 @@ review_matched <- function(dirname) {
 #' @export
 review_unmatched <- function(dirname) {
 
-  review(dirname, 'df_unmatched.csv')
+  filename <- 'df_unmatched.csv'
+
+  if (
+    fs::file_exists(
+      fs::path_norm(
+        fs::path_join(c(dirname, 'df_unmatched_reviewed.csv'))
+      )
+    )
+  ) {
+    filename <- 'df_unmatched_reviewed.csv'
+  }
+
+  review(dirname, filename)
 
 }
 

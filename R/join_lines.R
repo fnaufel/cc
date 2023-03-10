@@ -6,7 +6,6 @@
 #' @return A tibble.
 #' @author Fernando Naufel
 #' @importFrom dplyr filter mutate
-#' @export
 join_lines <- function(df) {
 
   df1 <- df %>%

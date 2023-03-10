@@ -11,7 +11,6 @@
 #' @importFrom dplyr mutate if_else arrange
 #' @importFrom lubridate dmy year years
 #' @importFrom stringr str_c
-#' @export
 guess_year <- function(df, due_date) {
 
   due_date <- lubridate::dmy(due_date)

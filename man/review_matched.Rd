@@ -2,7 +2,7 @@
 % Please edit documentation in R/review.R
 \name{review_matched}
 \alias{review_matched}
-\title{Read \code{df_matched.csv} into a tibble and edit interactively.}
+\title{Read \code{df_matched.csv} or \code{df_matched_reviewed.csv} into a tibble and edit interactively.}
 \usage{
 review_matched(dirname)
 }
@@ -10,5 +10,5 @@ review_matched(dirname)
 \item{dirname}{Directory where csv files are.}
 }
 \description{
-Read \code{df_matched.csv} into a tibble and edit interactively.
+If the \verb{_reviewed} file exists, edit that. It may have partial changes made by the user.
 }

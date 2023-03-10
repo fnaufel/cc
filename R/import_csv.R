@@ -13,7 +13,6 @@
 #' @importFrom janitor clean_names remove_empty
 #' @importFrom dplyr rename last_col mutate select starts_with distinct
 #' @importFrom stringr str_remove_all
-#' @export
 import_csv <- function(filename) {
 
   df <- readr::read_csv(

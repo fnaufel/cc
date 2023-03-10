@@ -11,6 +11,8 @@
 #' @author fnaufel
 #' @importFrom dplyr mutate select
 #' @importFrom readr write_csv
+#' @importFrom tidyselect everything
+#' @importFrom stringr str_trim
 write_df <- function (df, filename) {
 
   row_nos <- 1:nrow(df)
@@ -19,23 +21,12 @@ write_df <- function (df, filename) {
     dplyr::mutate(
       n = row_nos,
       data = format(data, '%Y-%m-%d'),
-      valor = str_trim(format(valor, decimal.mark = ',')),
+      valor = stringr::str_trim(format(valor, decimal.mark = ',')),
       data_fatura = format(data_fatura, '%Y-%m-%d')
-    )
+    ) %>%
+    select(n, tidyselect::everything())
 
   df_to_write %>%
-    dplyr::select(
-      n,
-      data,
-      item,
-      valor,
-      categoria,
-      obs,
-      cidade,
-      parcela,
-      n_parcelas,
-      data_fatura
-    ) %>%
     readr::write_csv(filename)
 
 }

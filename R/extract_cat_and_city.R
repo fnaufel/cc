@@ -8,7 +8,6 @@
 #' @importFrom tidyr separate_wider_delim
 #' @importFrom dplyr mutate if_else select
 #' @importFrom stringr str_to_upper str_trim
-#' @export
 extract_cat_and_city <- function(df) {
 
   df %>%
