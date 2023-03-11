@@ -1,9 +1,12 @@
 #' Match items to more detailed categories and subcategories.
 #'
-#' @description This function uses file `../../items_categories.csv`, which contains the association between items and categories.
+#' @description This function uses two sources, in this order:
+#' * Last month's fatura,
+#' * The file in `mapping`, which contains the association between items and categories.
 #'
 #' @param df Tibble produced by [guess_year()].
 #' @param dirname Path passed by the user to [import_dir()].
+#' @param mapping Path and name of a csv file containing 2 columns: `item` and `category`.
 #' @return A tibble.
 #' @author Fernando Naufel
 #' @importFrom readr read_csv write_csv
@@ -12,41 +15,16 @@
 #' @importFrom dplyr filter select
 #' @importFrom fs path_norm path_join
 #' @importFrom lubridate month
-fix_categories <- function (df, dirname) {
+fix_categories <- function (df, dirname, mapping) {
 
-  # Get number of last month
-  this_month <- df %>%
-    dplyr::slice(1) %>%
-    dplyr::pull(data_fatura)
-  last_month <- (this_month - months(1)) %>%
-    lubridate::month() %>%
-    formatC(width = 2, flag = '0')
-
-  # Assemble filename for last month's final tibble
-  last_month_final_csv <- fs::path_norm(
-    fs::path_join(
-      dirname,
-      '..',
-      last_month,
-      'df_final.csv'
-    )
-  )
-
-  # If possible, get info from last month's tibble
-  if (fs::file_exists(last_month_final_csv)) {
-    df <- df %>%
-      use_history(last_month_final_csv)
-  }
+  # First, try to get info from last month's fatura
+  df <- df %>%
+    use_history(dirname)
 
   # Read csv with mapping from items to categories
   new_cats <- readr::read_csv(
     fs::path_norm(
-      fs::path_join(
-        c(
-          dirname,
-          '../../items_categories.csv'
-        )
-      )
+      fs::path_join(c(dirname, mapping))
     ),
     comment = '#'
   )

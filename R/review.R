@@ -1,94 +1,37 @@
-#' Read `df_matched.csv` or `df_matched_reviewed.csv` into a tibble and edit interactively.
+#' Read a csv file as produced by [import_dir()] into a tibble and edit interactively.
 #'
-#' @description If the `_reviewed` file exists, edit that. It may have partial changes made by the user.
+#' @description This function uses a table of categories for autocompletion.
 #'
-#' @param dirname Directory where csv files are.
+#' @param filename Path and name of csv file.
+#' @param categories Path and name of csv file containing categories.
 #'
 #' @importFrom readr read_csv locale
-#' @importFrom fs path_norm path_join path_ext_remove path_ext_set
+#' @importFrom fs path_norm path_join path_abs
 #' @importFrom dplyr pull
 #' @importFrom DataEditR data_edit
 #' @export
-review_matched <- function(dirname) {
+review <- function(
+  filename,
+  categories = '../../categories.csv'
+) {
 
-  filename <- 'df_matched.csv'
-
-  if (
-    fs::file_exists(
-      fs::path_norm(
-        fs::path_join(c(dirname, 'df_matched_reviewed.csv'))
-      )
-    )
-  ) {
-    filename <- 'df_matched_reviewed.csv'
-  }
-
-  review(dirname, filename)
-
-}
-
-#' Read `df_unmatched.csv` or `df_unmatched_reviewed.csv` into a tibble and edit interactively.
-#'
-#' @description If the `_reviewed` file exists, edit that. It may have partial changes made by the user.
-#'
-#' @param dirname Directory where csv files are.
-#'
-#' @importFrom readr read_csv locale
-#' @importFrom fs path_norm path_join path_ext_remove path_ext_set
-#' @importFrom dplyr pull
-#' @importFrom DataEditR data_edit
-#' @export
-review_unmatched <- function(dirname) {
-
-  filename <- 'df_unmatched.csv'
-
-  if (
-    fs::file_exists(
-      fs::path_norm(
-        fs::path_join(c(dirname, 'df_unmatched_reviewed.csv'))
-      )
-    )
-  ) {
-    filename <- 'df_unmatched_reviewed.csv'
-  }
-
-  review(dirname, filename)
-
-}
-
-review <- function(dirname, file) {
+  # Build path to categories csv file
+  dirparts <- fs::path_split(fs::path_abs(filename))[[1]]
+  dirname <- fs::path_join(dirparts[-length(dirparts)])
 
   # Read standard categories and subcategories
   categories <- readr::read_csv(
-    fs::path_norm(
-      fs::path_join(
-        c(dirname, '../../categories.csv')
-      )
-    )
+    fs::path_norm(fs::path_join(c(dirname, categories)))
   ) %>%
     dplyr::pull(categoria)
 
-  # Read matched df
-  df <- read_df(
-    fs::path_norm(
-      fs::path_join(c(dirname, file))
-    )
-  )
+  # Read
+  df <- read_df(filename)
 
   # Edit interactively and save
   df %>%
     DataEditR::data_edit(
-      save_as = fs::path_norm(
-        fs::path_join(
-          c(
-            dirname,
-            file %>%
-              fs::path_ext_remove() %>%
-              paste0('_reviewed') %>%
-              fs::path_ext_set('csv')
-          )
-        )
-      ),
+      save_as = append_time(filename),
       viewer = 'browser',
       theme = 'paper',
       col_names = FALSE,

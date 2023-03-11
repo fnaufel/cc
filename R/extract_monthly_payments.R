@@ -8,7 +8,6 @@
 #' @importFrom tidyr separate_wider_regex separate_wider_delim
 #' @importFrom dplyr mutate
 #' @importFrom stringr str_trim str_remove
-#' @export
 extract_monthly_payments <- function(df) {
 
   df %>%
