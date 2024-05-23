@@ -4,12 +4,12 @@
 \alias{use_history}
 \title{Try to get info from last month's csv to fix categories.}
 \usage{
-use_history(df, last_month_final_csv)
+use_history(df, dirname)
 }
 \arguments{
 \item{df}{This month's tibble.}
 
-\item{last_month_final_csv}{Path to last month's csv file.}
+\item{dirname}{Path passed by the user to \code{\link[=import_dir]{import_dir()}}.}
 }
 \value{
 A tibble.

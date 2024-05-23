@@ -1,0 +1,15 @@
+
+```{r}
+dirname <- '/home/fnaufel/Documents/Personal/Cartoes/2023/02/'
+due_date <- '15-02-23'
+categorize <- FALSE
+```
+
+```{r}
+import_dir(
+  dirname,
+  due_date,
+  categorize
+)
+```
+

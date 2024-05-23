@@ -4,18 +4,24 @@
 \alias{fix_categories}
 \title{Match items to more detailed categories and subcategories.}
 \usage{
-fix_categories(df, dirname)
+fix_categories(df, dirname, mapping)
 }
 \arguments{
 \item{df}{Tibble produced by \code{\link[=guess_year]{guess_year()}}.}
 
 \item{dirname}{Path passed by the user to \code{\link[=import_dir]{import_dir()}}.}
+
+\item{mapping}{Path and name of a csv file containing 2 columns: \code{item} and \code{category}.}
 }
 \value{
 A tibble.
 }
 \description{
-This function uses file \code{../../items_categories.csv}, which contains the association between items and categories.
+This function uses two sources, in this order:
+\itemize{
+\item Last month's fatura,
+\item The file in \code{mapping}, which contains the association between items and categories.
+}
 }
 \author{
 Fernando Naufel

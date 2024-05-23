@@ -4,19 +4,30 @@
 \alias{import_dir}
 \title{Import and process all tabula csv files in directory \code{dirname}.}
 \usage{
-import_dir(dirname, due_date)
+import_dir(
+  dirname,
+  due_date,
+  categorize = TRUE,
+  mapping = "../../items_categories.csv"
+)
 }
 \arguments{
 \item{dirname}{Directory as string.}
 
 \item{due_date}{Date of current fatura.}
+
+\item{categorize}{If \code{TRUE}, assign new categories to items.}
+
+\item{mapping}{Path and name of a csv file containing 2 columns: \code{item} and \code{category}. Used if \code{categorize == TRUE}.}
 }
 \description{
 This will read all csv files of the form 'tabula*.csv' in \code{dirname} and create 2 files (also in \code{dirname}):
 \itemize{
-\item \code{df_matched.csv}, containing records whose categories were automatically determined (based on a table read from \code{dirname/../../categories.csv}), and
-\item \code{df_unmatched.csv}, containing records with the original categories from the fatura pdf.
+\item \verb{df_matched_(...).csv}, containing records whose categories were automatically determined (based on a table read from a csv file), and
+\item \verb{df_unmatched_(...).csv}, containing records with the original categories from the fatura pdf.
 }
+
+In both filenames above, \code{(...)} is the current time in the format \code{yy_mm_dd_hh_mm_ss}.
 }
 \author{
 Fernando Naufel
