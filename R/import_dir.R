@@ -84,12 +84,17 @@ import_dir <- function(
       )
     )
 
-  # Write to files
+  # Write to files (with timestamp)
   if (nrow(df_matched) > 0) {
     df_matched %>%
       write_df(
         fs::path_norm(
-          fs::path_join(c(dirname, 'df_matched'))
+          fs::path_join(
+            c(
+              dirname,
+              append_time('df_matched.csv')
+            )
+          )
         )
       )
   }
@@ -98,7 +103,12 @@ import_dir <- function(
     df_unmatched %>%
       write_df(
         fs::path_norm(
-          fs::path_join(c(dirname, 'df_unmatched'))
+          fs::path_join(
+            c(
+              dirname,
+              append_time('df_unmatched.csv')
+            )
+          )
         )
       )
   }
